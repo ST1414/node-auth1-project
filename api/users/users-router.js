@@ -16,12 +16,7 @@ const { restricted, checkUsernameFree, checkUsernameExists, checkPasswordLength,
 */
 
 router.get('/', restricted, (req, res, next) => {
-  // User.find()
-  //   .then( response => {
-  //     console.log('ROUTER Response: ');
-  //     res.send('<h1>User Router</h1>');
-  //   })
-  //   .catch( next );
+
   console.log('ROUTER Response');
   res.send('<h1>User Router</h1>');
 
