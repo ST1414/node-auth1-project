@@ -8,7 +8,7 @@ const User = require('../users/users-model')
     "message": "You shall not pass!"
   }
 */
-function restricted(next) {
+function restricted (req, res, next) {
   console.log('Restricted');
   next();
 }
@@ -22,7 +22,7 @@ function restricted(next) {
     "message": "Username taken"
   }
 */
-function checkUsernameFree(next) {
+function checkUsernameFree(req, res, next) {
   console.log('checkUserNameFree');
   next();
 }
@@ -35,7 +35,7 @@ function checkUsernameFree(next) {
     "message": "Invalid credentials"
   }
 */
-function checkUsernameExists(next) {
+function checkUsernameExists(req, res, next) {
   console.log('checkUsernameExists');
   next();
 }
@@ -48,7 +48,7 @@ function checkUsernameExists(next) {
     "message": "Password must be longer than 3 chars"
   }
 */
-function checkPasswordLength(next) {
+function checkPasswordLength(req, res, next) {
   console.log('checkPasswordLength');
   next();
 }

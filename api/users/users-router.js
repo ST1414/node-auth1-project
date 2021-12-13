@@ -15,7 +15,7 @@ const { restricted, checkUsernameFree, checkUsernameExists, checkPasswordLength,
   { "message": "You shall not pass!"}
 */
 
-router.get('/', (req, res, next) => {
+router.get('/', restricted, (req, res, next) => {
   // User.find()
   //   .then( response => {
   //     console.log('ROUTER Response: ');
