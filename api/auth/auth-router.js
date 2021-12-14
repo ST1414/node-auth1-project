@@ -48,8 +48,10 @@ router.post('/login', checkUsernameExists, async (req, res, next) => {
   try {
     // 0- Middleware checks for username existing; adds user info from DB to the req
     // 1- pull username, pwd, and userFromDb from req.body
-    const { username, password, userFromDb } = req.body;    
 
+    const { username, password } = req.body;
+    const userFromDb = req.userFromDb;
+    
     // 3- recreate the hash using password from req.body
     // 4- compare this against the hash in the database
     // * If pwd doesn't match, return 401
@@ -78,21 +80,20 @@ router.post('/login', checkUsernameExists, async (req, res, next) => {
   response for not-logged-in users => status 200: { "message": "no session"}
  */
 router.get('/logout', async (req, res, next) => {
-  console.log('LOGOUT-session: ', req.session)
   try {
     if (req.session.user) {
-      req.session.destroy( err => {
-        if ( err ) {
-          res.json('no session')
+      req.session.destroy((err) => {
+        if (err) {
+          res.status(200).json('no session')
         } else {
-          res.json('logged out')
+          res.status(200).json({ message: 'logged out' })
         }
       })
     } else {
-      res.json({ message: 'no session' })
+      res.status(200).json({ message: 'no session' })
     }
-  } catch (error) {
-    next(error);
+  } catch (err) {
+    next(err)
   }
 })
 

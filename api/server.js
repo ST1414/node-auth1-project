@@ -24,7 +24,7 @@ const Store = require('connect-session-knex')(session)
 const server = express();
 
 // SEE ABOVE FOR IMPORTS RELATED TO SESSION & STORE
- server.use(session({
+server.use(session({
   name: 'chocolatechip',
   secret: process.env.SESSION_SECRET || 'keep it secret, keep it safe',
   cookie: {
@@ -35,7 +35,7 @@ const server = express();
   resave: false, // not important
   saveUninitialized: false, // sessions false don't get stored on the server by default, we have to "cause it" to happen in the code GDPR
   rolling: true, // pushed back logout date
-  store: new Store({ // Enables persistence in the event of a server reset
+  store: new Store({
     knex: require('../data/db-config'),
     tablename: 'sessions',
     sidfieldname: 'sid',
