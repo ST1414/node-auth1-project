@@ -17,8 +17,13 @@ const { restricted } = require('../auth/auth-middleware');
 
 router.get('/', restricted, (req, res, next) => {
 
-  console.log('ROUTER Response');
-  res.send('<h1>User Router</h1>');
+  console.log('ROUTER Response'); // <<<<<<<<<<<<<<<<<<<<<<<
+  User.find()
+    .then( response => {
+      console.log('USER ROUTER - response: ', response) ;
+      res.json(response);
+    })
+    .catch( next );
 
 })
 

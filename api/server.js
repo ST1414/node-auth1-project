@@ -25,7 +25,7 @@ const server = express();
 
 // SEE ABOVE FOR IMPORTS RELATED TO SESSION & STORE
  server.use(session({
-  name: 'chocolatechiop',
+  name: 'chocolatechip',
   secret: process.env.SESSION_SECRET || 'keep it secret, keep it safe',
   cookie: {
     maxAge: 1000 * 60 * 60,
